@@ -46,7 +46,7 @@ module Technoweenie # :nodoc:
           if (size.is_a?(String) && size =~ /^crop: (\d*)x(\d*)/i) ||
               (size.is_a?(Array) && size.first.is_a?(String) &&
                 size.first =~ /^crop: (\d*)x(\d*)/i)
-            img.crop_resized!($1.to_i, $2.to_i)
+            img.crop_resized!($1.to_i, $2.to_i, Magick::NorthGravity)
             # We need to save the resized image in the same way the
             # orignal does.
             self.temp_path = write_to_temp_file(img.to_blob { self.quality = 80 })
